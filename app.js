@@ -1,4 +1,3 @@
-
 class View {
   constructor(){
     this.app = document.getElementById("app");
@@ -75,7 +74,7 @@ class Search {
   async searchRepo(){
     try {
       if(this.view.searchInput.value) {
-        this.clearUsers();
+        this.clearRepos();
         await fetch(`https://api.github.com/search/repositories?per_page=5&q=${this.view.searchInput.value}`)
         .then((response)=>{     
           response.json().then((response) => {
@@ -83,7 +82,7 @@ class Search {
           })
         });
       } else {
-        this.clearUsers();        
+        this.clearRepos();        
       }
     } catch (error) {
       console.log(`Error: ${error}`);
@@ -91,7 +90,7 @@ class Search {
 
   }
 
-  clearUsers() {
+  clearRepos() {
     this.view.autocompleteBox.innerHTML = "";
   }
 
